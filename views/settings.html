@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>VoiceHub | Settings</title>
+<link rel="icon" type="image/x-icon" href="./favicon.ico">
+<script type="text/javascript" src="./demo_files/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="./contact-us_files/main2.css">
+<meta name="description" content="VoiceHub offers online Text-to-Speech TTS voices through a server application.  We convert your Internet text into speech on-demand.">
+<meta name="keywords" content="TTS, Text-to-Speech, Text-to-Voice, VoiceForge, speech, talking software, hosted, SaaS, synthesis, free demo, interactive, voice engine, audio, record, custom voices, prosody, voice demo, online tts, reader, synthesizer, converter, conversion, download">
+<meta name="robots" content="index, follow">
+</head>
+<body>
+
+<header>
+<h1><a href="./"><img src="./index_files/VoiceHub.jpg" alt="VoiceForge" width="186" height="57"></a></h1>
+<nav>
+<ul id="toolbar-navigation">
+<li><a href="./">Home</a>
+</li><li class="lst"><a href="./contact-us">Contact Us</a>
+</li></ul>
+<ul id="main-navigation">
+<li><a href="./what-is-voicehub">What is VoiceHub?</a>
+</li><li><a href="./demo">Demo</a>
+</li><li class="cur"><a href="./settings">Settings</a>
+</li></ul>
+</nav>
+</header>
+
+
+<div class="page-header">
+<img src="./contact-us_files/settings.jpg" alt="Demo" usemap="#hmap" width="860" height="151">
+<map name="hmap">
+<area shape="rect" coords="544,20,669,65" href="./demo?uservoice=Vlad">
+</map>
+</div>
+
+<div id="content-wrapper">
+<div id="sub-content">
+<h3>News</h3>
+<dl>
+</dl>
+</div>
+  <!-- news js-->
+<script>
+  fetch('./getNews', {
+        method: 'GET'
+  })
+        .then(response => response.json())
+        .then(news => {
+          console.log(news);
+          var html = '<h3>News</h3><dl>';
+          for (var i = 0; i < news.length; i++) {
+            if (i == 4) break;
+            html += `<dt>${news[i].date}</dt><dd>${news[i].text}</dd>`;
+          }
+          html += '</dl>';
+          document.getElementById('sub-content').innerHTML = html;      
+        });
+</script>
+</script>
+<div id="content">
+<h1>Change your VoiceHub apperance right here!</h1>
+<br>
+<h2>Theme</h2>
+<br>
+<h4>Select your theme! (Themes dont apply on this page)</h4>
+<br>
+  <select class="setting" name="themes" id="themes">
+    <option value="vh">Normal</option>
+    <option value="vf">VoiceForge</option>
+    <option value="new_vf">New Voiceforge</option>
+  </select>
+<br>
+<h2>Enable Downloading sounds</h2>
+<br>
+<h4>Do you want your sounds to be downloadable? Leaving this unchecked will make the player not show up on generation (This setting doesnt apply to the old VF demo)</h4>
+<br>
+<input class="setting" type="checkbox" id="download" name="downloadable">
+  <br>
+  <h2>Enable the old voiceforge demo look</h2>
+  <br>
+  <h4>Enable the prototype version of the voiceforge demo! This will redirect the current demo to the prototype one (Themes dont apply on the page)</h4>
+  <br>
+  <input class="setting" type="checkbox" id="old" name="old">
+</div>
+</div>		
+
+<footer>
+<p>Technology and Copyright © 2023 Cepstral LLC + Mondora. All Rights Reserved.
+  </p>
+<p class="power">TTS engine powered by: <a href="https://www.cepstral.com/"><img src="./contact-us_files/cepstral-logo.gif" alt="Cepstral" width="79" height="20"></a></p>
+</footer>
+
+
+
+<script>
+  //Read settings if theres a cookie
+  if (document.cookie)
+  {
+    var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++)
+    {
+      let offset = 0;
+      if (i > 0)
+      {
+      offset = 1;
+      }
+      var cookie = cookies[i].split("=");
+      console.log(cookie);
+      const elem = $(`#${cookie[0].substring(offset)}`);
+      if (elem.prop("tagName") == "SELECT") {
+        elem.find(`option[value='${cookie[1]}']`).prop("selected", true);
+      } else {
+        if (cookie[1].includes("false") || !cookie[1])
+        {
+        elem.prop("checked", false);
+        }
+        else
+        {
+        elem.prop("checked", true);
+        }
+      }
+    }
+  }
+  //Wrapper: Offline code because why not
+  $(".setting").on("change", (event) => {
+  const elem = $(event.target);
+  const setting = elem.attr("id");
+  const value = elem.prop("tagName") == "SELECT" ? 
+  elem.val() : elem.prop("checked");
+    const d = new Date();
+    d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
+    document.cookie = setting + "=" + value + ";expires=" + d.toUTCString() + ";path=/";
+  })
+</script>
+</body></html>

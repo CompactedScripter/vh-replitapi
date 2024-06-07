@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+
+
+<title>VoiceHub | What is VoiceHub?</title>
+<link rel="stylesheet" type="text/css" href="./what-is-voicehub_files/main2.css">
+<link rel="icon" type="image/x-icon" href="./favicon.ico">
+<meta name="description" content="VoiceHub offers online Text-to-Speech TTS voices through VoiceForge's Swift Engine. We convert your Internet text into speech on-demand.">
+<meta name="keywords" content="TTS, Text-to-Speech, Text-to-Voice, VoiceForge, speech, talking software, hosted, SaaS, synthesis, free demo, interactive, voice engine, audio, record, custom voices, prosody, voice demo, online tts, reader, synthesizer, converter, conversion, download">
+<meta name="robots" content="index, follow">
+<header>
+<h1><a href="/"><img id="logo" src="./index_files/VoiceHub.jpg" alt="VoiceHub" width="186" height="57"></a></h1>
+<nav>
+<ul id="toolbar-navigation">
+<li class="cur"><a href="./">Home</a>
+</li><li class="lst"><a href="./contact-us">Contact Us</a>
+</li></ul>
+<ul id="main-navigation">
+<li><a id="voicehub" href="./what-is-voicehub">What is VoiceHub?</a>
+</li><li><a href="./demo">Demo</a>
+</li><li><a href="./settings">Settings</a>
+</li></ul>
+</nav>
+</header>
+  <script>
+    var cookies = document.cookie.split(";");
+    if (cookies.toString().includes("themes=vf"))
+    {
+    document.getElementById("voicehub").innerHTML = "What is VoiceForge?"
+    document.getElementById("logo").src = "./index_files/VoiceForge.jpg"
+    }
+  </script>
+<div class="page-header">
+<img src="./what-is-voicehub_files/whatis.jpg" alt="Demo" usemap="#hmap" width="860" height="154">
+<map name="hmap">
+<area shape="rect" coords="557,16,685,62" href="/demo?uservoice=Vlad">
+</map>
+</div>
+
+<div id="content-wrapper">
+<div id="sub-content">
+<h3>News</h3>
+<dl>
+</dl>
+</div>
+  <script>
+    fetch('./getNews', {
+          method: 'GET'
+    })
+          .then(response => response.json())
+          .then(news => {
+            console.log(news);
+            var html = '<h3>News</h3><dl>';
+            for (var i = 0; i < news.length; i++) {
+              if (i == 4) break;
+              html += `<dt>${news[i].date}</dt><dd>${news[i].text}</dd>`;
+            }
+            html += '</dl>';
+            document.getElementById('sub-content').innerHTML = html;      
+          });
+  </script>
+<div id="content">
+<p>VoiceHub revives the website version of a TTS software known as VoiceForge. VoiceForge is a application that allows users to use high quality Text-To-Speech (TTS) audio to websites, animations, or games using their game service. Other TTS websites make it hard for users to use their TTS versions on their ideas because of these 3 reasons:</p>
+<ul>
+<li>Text-to-Speech software is complex</li>
+<li>The voices sound corporate and boring</li>
+<li>The audio distribution rights are expensive</li>
+</ul>
+<p>However, VoiceHub brings back this old website to make it easy for developers to use VoiceForge TTS without the hassle of using the mobile app. Enter some text, select a voice, and code it onto your idea using Swift Engine's API! </p>
+<p>So what if it's VoiceForge... you might think it's a copy of every other TTS website, but it's not. VoiceForge has made over 40 fun and entertaining voices to use for your ideas! You can test them out using the Demo page, and when your actually ready to add these voices into your idea, <strong>all you have to do is code the API into your idea.</strong></p>
+<p>The process might be a little compilicated, but then again, it'll all be for the best when you have fun, entertaining, and interesting voices on your idea that will help it stand out, and get more users amazed by what you did! If you only feel like goofing around with these voices, then use the Demo page for fun! VoiceHub will always be here, and ready for you to use.</p>
+</div>
+</div>		
+
+<footer>
+<p>Technology and Copyright © 2023 Cepstral LLC + Mondora. All Rights Reserved.
+  </p>
+<p class="power">TTS engine powered by:<a href="https://www.cepstral.com/"><img src="./index_files/cepstral-logo.gif" alt="Cepstral" width="79" height="20"></a></p>
+</footer>
+
+
+
+</body></html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+  <title>VoiceHub | Demo</title>
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <link rel="stylesheet" type="text/css" href="./demo_files/main2.css">
+  <meta name="description" content="The VoiceHub demo to get your VoiceForge nostalgia thoughts back to life!">
+  <meta name="keywords" content="TTS, Text-to-Speech, Text-to-Voice, VoiceForge, speech, talking software, hosted, SaaS, synthesis, free demo, interactive, voice engine, audio, record, custom voices, prosody, voice demo, online tts, reader, synthesizer, converter, conversion, download">
+  <meta name="robots" content="index, follow">
+  <script type="text/javascript" src="./demo_files/jquery.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1><a href="/"><img id="logo" src="./index_files/VoiceHub.jpg"
+          alt="VoiceForge" width="186" height="57"></a></h1>
+    <nav>
+      <ul id="toolbar-navigation">
+        <li><a href="/">Home</a>
+        </li>
+        <li class="lst"><a href="./contact-us">Contact Us</a>
+        </li>
+      </ul>
+      <ul id="main-navigation">
+        <li><a id="voicehub" href="/what-is-voicehub">What is VoiceHub?</a>
+        </li>
+        <li class="cur"><a href="./demo">Demo</a>
+        </li>
+        <li><a href="./settings">Settings</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+<script>
+  var cookies = document.cookie.split(";");
+  if (cookies.toString().includes("themes=vf"))
+  {
+  document.getElementById("voicehub").innerHTML = "What is VoiceForge?"
+  document.getElementById("logo").src = "./index_files/VoiceForge.jpg"
+  }
+</script>
+  <div class="page-header">
+    <img src="./demo_files/demo.jpg" alt="Demo" usemap="#hmap" width="860" height="154">
+    <map name="hmap">
+      <area shape="rect" coords="542,22,669,68" href="./demo?uservoice=Belle">
+    </map>
+  </div>
+
+  <div class="demo">
+    <div id="vfplayer">
+      <div id="voximg"><img alt="Callie" src="./demo_files/Callie.jpg"></div>
+      <textarea id="dtu" name="dtu" cols="50" rows="2"
+        wrap="soft">Enter some text here, and click the play button on the right to start listening!</textarea>
+      <a id="play" href="javascript:;">Play</a>
+
+      <div class="pl2">
+        <select id="curvox" onchange="set_voice(this.value)">
+          <optgroup label="English — en">
+            <option id="_Allison" name="Allison" value="Allison">Allison
+            </option>
+            <option id="_Amy" name="Amy" value="Amy">Amy
+            </option>
+            <option name="Belle" value="Belle">Belle
+            </option>
+            <option id="_Callie" name="Callie" value="Callie">Callie
+            </option>
+            <option id="_CallieQ" name="CallieQ" value="CallieQ">CallieQ
+            </option>
+            <option name="Charlie" value="Charlie">Charlie
+            </option>
+            <option name="Conrad" value="Conrad">Conrad
+            </option>
+            <option name="Dallas" value="Dallas">Dallas
+            </option>
+            <option id="_Damien" name="Damien" value="Damien">Damien
+            </option>
+            <option id="_David" name="David" value="David">David
+            </option>
+            <option name="DesignerDave" value="Designer">Designer Dave
+            </option>
+            <option id="_Diane" name="Diane" value="Diane">Diane
+            </option>
+            <option name="Diesel" value="Diesel">Diesel
+            </option>
+            <option id="_Dog" name="Dog" value="Dog">Dog
+            </option>
+            <option id="_Duchess" name="Duchess" value="Duchess">Duchess
+            </option>
+            <option id="_Duncan" name="Duncan" value="Duncan">Duncan
+            </option>
+            <option id="_Emily" name="Emily" value="Emily">Emily
+            </option>
+            <option name="EvilGenius" value="Evilgenius">EvilGenius
+            </option>
+            <option name="Frank" value="Frank">Frank
+            </option>
+            <option name="French-fry" value="French-fry">French-fry
+            </option>
+            <option name="Gregory" value="Gregory">Gregory
+            </option>
+            <option id="_Isabelle" name="Isabelle" value="Isabelle">Isabelle
+            </option>
+            <option id="_Jean-Pierre" name="Jean-Pierre" value="Jean-Pierre">Jean-Pierre
+            </option>
+            <option name="JerkFace" value="Jerkface">JerkFace
+            </option>
+            <option name="JerseyGirl" value="JerseyGirl">JerseyGirl
+            </option>
+            <option name="Kayla" value="Kayla">Kayla
+            </option>
+            <option id="_Katrin" name="Katrin" value="Katrin">Katrin
+            </option>
+            <option name="Kevin" value="Kevin">Kevin
+            </option>
+            <option name="Kidaroo" value="Kidaroo">Kidaroo
+            </option>
+            <option id="_Lawrence" name="Lawrence" value="Lawrence">Lawrence
+            </option>
+            <option id="_Linda" name="Linda" value="Linda">Linda
+            </option>
+            <option id="_Marta" name="Marta" value="Marta">Marta
+            </option>
+            <option id="_Matthias" name="Matthias" value="Matthias">Matthias
+            </option>
+            <option id="_Miguel" name="Miguel" value="Miguel">Miguel
+            </option>
+            <option id="_Millie" name="Millie" value="Millie">Millie
+            </option>
+            <option name="Obama" value="Obama">Obama
+            </option>
+            <option name="Princess" value="Princess">Princess
+            </option>
+            <option name="RansomNote" value="RansomNote">RansomNote
+            </option>
+            <option id="_Robin" name="Robin" value="Robin">Robin
+            </option>
+            <option id="_Robot" name="Robot" value="Robot">Robot
+              </option>
+            <option id="_Shouty" name="Shouty" value="Shouty">Shouty
+            </option>
+            <option name="ShyGirl" value="Shygirl">ShyGirl
+            </option>
+            <option name="Susan" value="Susan">Susan
+            </option>
+            <option name="Tamika" value="Tamika">Tamika
+            </option>
+            <option name="TopHat" value="TopHat">TopHat
+            </option>
+            <option name="Vixen" value="Vixen">Vixen
+            </option>
+            <option id="_Vittoria" name="Vittoria" value="Vittoria">Vittoria
+            </option>
+            <option name="Vlad" value="Vlad">Vlad
+            </option>
+
+            <option id="_Walter" name="Walter" value="Walter">Walter
+            </option>
+
+            <option name="WarrenPeas" value="Warren">Warren-Peas
+            </option>
+             <option id="_Whispery" name="Whispery" value="Whispery">Whispery
+            </option>
+             <option id="_William" name="William" value="William">William
+            </option>
+            <!-- Cepstral Michael --><option name="Wiseguy" value="Wiseguy">Wiseguy
+            </option>
+
+            <option name="Zach" value="Zach">Zach
+            </option>
+            <optgroup label = "French - fr">
+              <option name="_Isabelle" value="Isabelle">Isabelle
+              </option>
+              <option name="_Jean-Pierre" value="Jean-Pierre">Jean-Pierre
+              </option>
+            </optgroup>
+          <optgroup label = "German - de">
+            <option name="_Katrin" value="Katrin">Katrin
+            </option>
+            <option name="_Matthias" value="Matthias">Matthias
+            </option>
+          </optgroup>
+          <optgroup label = "Italian - it">
+            <option id="_Vittoria" name="Vittoria" value="Vittoria">Vittoria
+            </option>
+          </optgroup>
+          <optgroup label = "Spanish - es">
+            <option id="_Marta" name="Marta" value="Marta">Marta
+            </option>
+            <option id="_Miguel" name="Miguel" value="Miguel">Miguel
+            </option>
+          </optgroup>
+        </select>
+
+        <div id="status">
+          Ready
+        </div>
+
+          <audio id="pie" controls style="display:none">
+            <source id="source" src="" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio>
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <ul class="voicelist">
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Allison');"><img id="Allison" alt="Allison"
+            src="./demo_files/Allison.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Amy');"><img id="Amy" alt="Amy" src="./demo_files/Amy.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Belle');"><img alt="Belle"
+            src="./demo_files/Belle.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Callie');"><img id="Callie" alt="Callie"
+            src="./demo_files/Callie(1).jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('CallieQ');"><img id="CallieQ" alt="CallieQ"
+            src="./demo_files/CallieQ.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Charlie');"><img alt="Charlie"
+            src="./demo_files/Charlie.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Conrad');"><img alt="Conrad"
+            src="./demo_files/Conrad.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Damien');"><img id="Damien" alt="Damien"
+            src="./demo_files/Damien.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Dallas');"><img alt="Dallas"
+            src="./demo_files/Dallas.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('David');"><img id="David" alt="David"
+            src="./demo_files/David.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Designer');"><img alt="DesignerDave"
+            src="./demo_files/DesignerDave.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Diane');"><img id="Diane" alt="Diane"
+            src="./demo_files/Diane.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Diesel');"><img alt="Diesel"
+            src="./demo_files/Diesel.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Dog');"><img id="Dog" img alt="Dog" src="./demo_files/Dog.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Duchess');"><img id="Duchess" img alt="Duchess"
+            src="./demo_files/Duchess.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Duncan');"><img id="Duncan" alt="Duncan"
+            src="./demo_files/Duncan.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Emily');"><img id="Emily" img alt="Emily"
+            src="./demo_files/Emily.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Evilgenius');"><img alt="EvilGenius"
+            src="./demo_files/EvilGenius.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Frank');"><img alt="Frank"
+            src="./demo_files/Frank.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('French-fry');"><img alt="French-fry"
+            src="./demo_files/French-fry.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Gregory');"><img alt="Gregory"
+            src="./demo_files/Gregory.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Isabelle');"><img id="Isabelle" alt="Isabelle"
+            src="./demo_files/Isabelle.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Jean-Pierre');"><img id="Jean-Pierre" alt="Jean-Pierre" src="./demo_files/Jean-Pierre.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Jerkface');"><img alt="JerkFace"
+            src="./demo_files/JerkFace.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('JerseyGirl');"><img alt="jerseygirl"
+            src="./demo_files/JerseyGirl.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Katrin');"><img id="Katrin" alt="Katrin"
+            src="./demo_files/Katrin.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Kayla');"><img alt="Kayla"
+            src="./demo_files/Kayla.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Kevin');"><img alt="Kevin"
+            src="./demo_files/Kevin.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Kidaroo');"><img id="Kidaroo" alt="Kidaroo"
+            src="./demo_files/Kidaroo.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Lawrence');"><img id="Lawrence" alt="Lawrence"
+            src="./demo_files/Lawrence.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Linda');"><img id="Linda" img alt="Linda"
+            src="./demo_files/Linda.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Marta');"><img id="Marta" img alt="Marta"
+            src="./demo_files/Marta.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Matthias');"><img id="Matthias" img alt="Matthias"
+            src="./demo_files/Matthias.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Miguel');"><img id="Miguel" alt="Miguel"
+            src="./demo_files/Miguel.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Millie');"><img id="Millie" alt="Millie"
+            src="./demo_files/Millie.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Obama');"><img alt="Obama"
+            src="./demo_files/Obama.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Princess');"><img alt="Princess"
+            src="./demo_files/Princess.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('RansomNote');"><img alt="RansomNote"
+            src="./demo_files/RansomNote.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Robin');"><img id="Robin" alt="Robin"
+            src="./demo_files/Robin.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Robot');"><img id="Robot" alt="Robot"
+            src="./demo_files/Robot.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Shouty');"><img id="Shouty" img alt="Shouty"
+            src="./demo_files/Shouty.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Shygirl');"><img alt="ShyGirl"
+            src="./demo_files/ShyGirl.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Susan');"><img alt="Susan"
+            src="./demo_files/Susan.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Tamika');"><img alt="Tamika"
+            src="./demo_files/Tamika.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('TopHat');"><img alt="TopHat"
+            src="./demo_files/TopHat.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Vittoria');"><img id="Vittoria" alt="Vittoria"
+            src="./demo_files/Vittoria.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Vixen');"><img alt="Vixen"
+            src="./demo_files/Vixen.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Vlad');"><img alt="Vlad"
+            src="./demo_files/Vlad.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Walter');"><img id="Walter" img alt="Walter"
+            src="./demo_files/Walter.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Warren');"><img alt="WarrenPeas"
+            src="./demo_files/WarrenPeas.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Whispery');"><img id="Whispery" alt="Whispery"
+            src="./demo_files/Whispery.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('William');"><img id="William" alt="William"
+            src="./demo_files/William.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Wiseguy');"><img alt="Wiseguy"
+            src="./demo_files/Wiseguy.jpg"></a>
+      </li>
+      <li><a href="./VoiceHub/demo#" onclick="return set_voice('Zach');"><img alt="Zach"
+            src="./demo_files/Zach.jpg"></a>
+      </li>
+    </ul>
+
+  </div>
+
+  <script>
+    let greyedout;
+    fetch('./filterVoices', {
+          method: 'GET'
+    })
+          .then(response => response.json())
+          .then(grey => {
+            greyedout = grey;
+            for (var i = 0; i < grey.length; i++)
+              {
+              document.getElementById(grey[i]).style.filter = "grayscale(100%)";
+              var option = document.getElementById('_' + grey[i]);
+              console.log(grey[i]);
+              option.remove();
+              }
+          })
+  </script>
+  <footer>
+    <p>Technology and Copyright © 2023 Cepstral LLC + Mondora. All Rights Reserved.</p>
+    <p class="power">TTS engine powered by: <a href="https://www.cepstral.com/"><img src="./demo_files/cepstral-logo.gif"
+          alt="Cepstral" width="79" height="20"></a></p>
+  </footer>
+  <script>
+    set_voice = function (vox) {
+      if (greyedout)
+      {
+      if (!greyedout.includes(vox))
+      {
+      $("#voximg").html("<img alt='" + vox + "' src='./images/voices/sqr/" + vox + ".jpg'>"); tmp = document.getElementById("curvox"); tmp.value = vox; return false;
+      }
+      else
+      {
+        fetch('./voiceErr', {
+              method: 'GET'
+        })
+              .then(response => response.text())
+              .then(err => {
+              alert(err);
+              })
+      return false;
+      }
+      }
+      else
+      {
+        $("#voximg").html("<img alt='" + vox + "' src='./images/voices/sqr/" + vox + ".jpg'>"); tmp = document.getElementById("curvox"); tmp.value = vox; return false;
+      }
+    };
+
+    function onAudioLoad() {
+      var url = "/demos/deleteAudio.php";
+      $.post(url);
+    }
+
+    $(document).ready(function () {
+
+      $('#dtu').bind('input propertychange', function () {
+
+        var textArea = $(this);
+        var len = textArea.val().length;
+
+        if (len > 200) {
+          textArea.val(textArea.val().substring(0, 200));
+        }
+      });
+
+      set_voice(function () {
+        var query = window.location.search.substring(1);
+        var parms = query.split('&');
+        for (var i = 0; i < parms.length; i++) {
+          var pos = parms[i].indexOf('=');
+
+          if (pos > 0) {
+            var key = parms[i].substring(0, pos);
+            var val = parms[i].substring(pos + 1);
+            if (key == "uservoice") {
+              return val;
+            }
+          }
+        }
+
+        return "Callie";
+      }());
+      $("#play").click(function () {
+        var voice = $("#curvox").val();
+        var text = $("#dtu").val();
+
+        var url = "demo/createAudio.php";
+
+        $("div#status").html('<img src="./graphics/ajax_loader.gif" />');
+
+        var params = { "text": text, "voice": voice };
+        console.log("is a get?");
+        $.get(url, params, function (data) {
+          console.log(data);
+          console.log("HI");
+          var audio = document.getElementById('pie') || new Audio();
+          var source = document.getElementById('source')
+          audio.src = data.toString();
+          console.log(cookies)
+          if (cookies.toString().includes("download=true"))
+          {
+          document.getElementById('pie').style.display='block';
+          }
+          audio.play();
+          $("div#status").html('Ready');
+        });
+
+      });
+    });
+  </script>
+
+</body>
+
+</html>

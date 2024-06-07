@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>VoiceHub | Contact Us</title>
+<link rel="icon" type="image/x-icon" href="./favicon.ico">
+<link rel="stylesheet" type="text/css" href="./contact-us_files/main2.css">
+<meta name="description" content="VoiceHub offers online Text-to-Speech TTS voices through a server application.  We convert your Internet text into speech on-demand.">
+<meta name="keywords" content="TTS, Text-to-Speech, Text-to-Voice, VoiceForge, speech, talking software, hosted, SaaS, synthesis, free demo, interactive, voice engine, audio, record, custom voices, prosody, voice demo, online tts, reader, synthesizer, converter, conversion, download">
+<meta name="robots" content="index, follow">
+</head>
+<body>
+
+  <header>
+  <h1><a href="/"><img id="logo" src="./index_files/VoiceHub.jpg" alt="VoiceHub" width="186" height="57"></a></h1>
+  <nav>
+  <ul id="toolbar-navigation">
+  <li class="cur"><a href="./">Home</a>
+  </li><li class="lst"><a href="./contact-us">Contact Us</a>
+  </li></ul>
+  <ul id="main-navigation">
+  <li><a id="voicehub" href="./what-is-voicehub">What is VoiceHub?</a>
+  </li><li><a href="./demo">Demo</a>
+  </li><li><a href="./settings">Settings</a>
+  </li></ul>
+  </nav>
+  </header>
+
+
+<div class="page-header">
+<img id="contact" src="./contact-us_files/contact.jpg" alt="Demo" usemap="#hmap" width="860" height="151">
+<map name="hmap">
+<area id="url" shape="rect" coords="544,20,669,65" href="./demo?uservoice=Conrad">
+</map>
+</div>
+  <script>
+    var cookies = document.cookie.split(";");
+    if (cookies.toString().includes("themes=vf"))
+    {
+    document.getElementById("voicehub").innerHTML = "What is VoiceForge?"
+    document.getElementById("logo").src = "./index_files/VoiceForge.jpg";
+      document.getElementById("contact").src = "./contact-us_files/contact_vf.jpg";
+      document.getElementById("url").href = "./demo?uservoice=Callie";
+    }
+  </script>
+<div id="content-wrapper">
+<div id="sub-content">
+<h3>News</h3>
+<dl>
+</dl>
+</div>
+  <!-- news js-->
+<script>
+  fetch('./getNews', {
+        method: 'GET'
+  })
+        .then(response => response.json())
+        .then(news => {
+          console.log(news);
+          var html = '<h3>News</h3><dl>';
+          for (var i = 0; i < news.length; i++) {
+            if (i == 4) break;
+            html += `<dt>${news[i].date}</dt><dd>${news[i].text}</dd>`;
+          }
+          html += '</dl>';
+          document.getElementById('sub-content').innerHTML = html;      
+        });
+</script>
+</script>
+<div id="content">
+<p>Want to contact us about issues, or want to make a suggestion?</p>
+<h2>How to Contact Us</h2>
+<table id="contact" border="0">
+<tbody><tr>
+<td><p>Jyvee's Discord: <a href="https://discord.com/users/668565079263936593" id="user1"></a></p></td>
+</tr>
+<tr>
+<td><p>Owen's Discord: <a href="https://discord.com/users/1183924096959004723" id="user2"></a></p></td>
+</tr>
+<tr>
+<td><p><a href="https://discord.gg/nPAYwFQgs6">Discord Server</a></p>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>		
+
+<footer>
+<p>Technology and Copyright © 2023 Cepstral LLC + Mondora. All Rights Reserved.
+  </p>
+<p class="power">TTS engine powered by: <a href="https://www.cepstral.com/"><img src="./contact-us_files/cepstral-logo.gif" alt="Cepstral" width="79" height="20"></a></p>
+</footer>
+
+
+
+<script>
+  const owenDiscord = "aqua.ti"
+  const jyveeDiscord = "jyvee"
+
+  const jyvString = document.getElementById("user1");
+  jyvString.textContent = jyveeDiscord;
+
+  const oweString = document.getElementById("user2");
+  oweString.textContent = owenDiscord;
+</script>
+</body></html>

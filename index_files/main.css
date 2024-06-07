@@ -1,0 +1,761 @@
+@font-face {
+   font-family: AQCondensedBold;
+   src: url("./../fonts/AkzidenzGrotesk-BQ-Condensed-Bold.otf");
+}
+
+@font-face {
+   font-family: AQItalic;
+   src: url("./../fonts/AkzidenzGrotesk-Italic.otf");
+}
+
+@font-face {
+   font-family: AQLight;
+   src: url("./../fonts/AkzidenzGrotesk-Light.otf");
+}
+
+@font-face {
+   font-family: AQMed;
+   src: url("./../fonts/AkzidenzGrotesk-Medium.otf");
+}
+
+@font-face {
+   font-family: AQCondensedMed;
+   src: url("./../fonts/AkzidenzGrotesk-MediumCond.otf");
+}
+
+@font-face {
+   font-family: Title;
+   src: url("./../fonts/AvenirNextLTPro-HeavyIt.otf");
+}
+
+body {
+   margin: 0;
+   padding: 0;
+   font-family: AQCondensedMed, Arial, Helvetica, sans-serif;
+   color: #fff;
+   line-height: 2em;
+   width: 100%;
+   overflow-x: hidden;
+}
+
+html {
+   width: 100%;
+   overflow-x: hidden;
+}
+
+p {
+   font-family: AQMed;
+   font-size: 2em;
+}
+
+.row {
+   padding: 40px 10px 40px 10px;
+}
+
+li {
+   letter-spacing: 0.1em;
+   font-size: 34px;
+   line-height: 190%;
+   list-style-position: outside;
+}
+
+a {
+   font-size: 20px;
+   letter-spacing: 2px;
+}
+
+h5 {
+   font-size: 7em;
+   font-family: AQCondensedBold;
+   font-style: italic;
+   color: #e927eb;
+   padding:100px 40px 30px 40px;
+}
+
+h6 {
+   font-family: AQCondensedBold;
+   font-size: 4.5em;
+   font-style: italic;
+   color: #000;
+   padding:0px 30px 100px 30px; 
+   line-height: 170%;
+}
+
+h4 {
+   font-family: Title;
+   font-size: 5em;
+   color: yellow;
+}
+
+h3 {
+   font-size: 190px;
+   font-family: AQCondensedBold;
+   font-style: italic;
+   color: gold;
+}
+.center-text{
+   text-align: center;
+}
+
+
+.nav-bullet {
+   margin-top: 10px;
+   color: yellow;
+}
+
+.nav-spacer {
+   width: 40px;
+}
+
+.navbar-nav > li > a {
+   display: flex;
+   align-items: center;
+   font-family: AQCondensedMed;
+   height: 50px;
+   padding: 34px 25px 0px 25px;
+   font-size: 25px;
+   letter-spacing: 0.4em;
+   color: #fff;
+}
+.navbar-nav > .navbar-btn {
+   font-size: 18px;
+   margin: 20px 20px 0 0;
+   background: linear-gradient(90deg, rgba(187, 107, 217, 1) 0%, rgba(255, 95, 209, 1) 100%);
+}
+
+
+.navbar-nav > li {
+   flex-direction: row;
+   list-style-type: none;
+
+}
+
+.nav-item:hover {
+   height: 89px;
+   background-color: rgba(11, 60, 124,0.125);
+ }
+ 
+.navbar-nav > a{
+      text-decoration: none;
+}
+.navbar-nav>li> a:hover{
+   background-color: rgba(11, 60, 124,0.0);
+}
+
+.navbar {
+   background: linear-gradient(90deg, rgba(187, 107, 217, 1) 0%, rgba(11, 189, 244, 1) 100%);
+   border-radius: 0px;
+   margin-bottom: 0px;
+   padding-bottom: 10px;
+   height: 90px;
+}
+
+.btn-dark {
+   background: linear-gradient(90deg, rgba(187, 107, 217, 1) 0%, rgba(255, 95, 209, 1) 100%);
+   margin-right: 20px;
+   font-size: 22px;
+   letter-spacing: 2px;
+   font-style: normal;
+   font-family: AQCondensedMed;
+   border-radius: 5px;
+
+   padding: 12px;
+}
+.btn-info {
+   font-size: 18px;
+   font-family: AQMed;
+   letter-spacing: 0.2em;
+}
+
+.jumbotron {
+   background-image: url("./../img/herographic.png");
+   background-size: cover;
+   height: 800px;
+   margin-bottom: 0px;
+   font-style: italic;
+}
+
+.jumbotron p {
+   font-family: AQCondensedMed;
+   letter-spacing: 2px;
+}
+
+.container-fluid {
+   background: linear-gradient(90deg, rgba(187, 107, 217, 1) 0%, rgba(11, 189, 244, 1) 100%);
+   padding: 0px;
+}
+
+
+
+
+/*/////INTRO////*/
+
+#intro-paragraph{
+   text-align: left;
+}
+
+#intro-vf-logo {
+   padding: 0 20px 10px 50px;
+}
+#intro-vf-logo img {
+   max-width: 90%;
+}
+
+#left-align-intro{
+   text-align: left;
+   
+}
+
+#intro-row {
+   margin-top:70px;
+   padding: 10px 10 100px 10;
+   line-height: 3em;
+
+}
+#intro-row p {
+   line-height: 200%;
+}
+#intro-row li{
+   font-size: 36px;
+   list-style-position: outside;
+   line-height: 110%;
+   padding-top:30px;
+}
+
+
+
+/*/////IDEAS-FRONTPAGE////*/
+
+
+
+.front-page-ideas {
+   text-align: center;
+   padding-bottom: 100px;
+}
+
+
+/*/////PLANS-FRONTPAGE////*/
+.plans-front-page .col-md-12 {
+   text-align: center;
+}
+
+
+
+.plans-front-page li {
+   letter-spacing: 0px;
+   padding: 7px;
+   font-size: 1.5em;
+}
+
+.plans-front-page {
+ 
+   font-family: AQMed;
+}
+
+.plan-holder{
+ 
+   height: auto;
+   width:50%;
+text-align: center;
+left: 25%;
+padding: 80px 0 30px 0;
+margin:auto;
+font-size: 1.5em;
+letter-spacing: 1px;
+}
+.plan-image{
+   width: 70%;
+   margin: auto;
+}
+.plan-image img{
+ width: 100%;
+ height:100%;
+ margin-top:-80px;
+
+}
+.plan-text{
+   text-align:left;
+   padding: 40px 0 0 0;
+}
+
+#pricing-plans-heading-text{
+   text-align:center;
+   padding: 0 0 150px 0;
+   letter-spacing: 5px;
+}
+
+
+
+.learn-more a {
+   
+   font-size: 2.3em;
+}
+.learn-more {
+   padding: 70px 0 70px 0;
+text-align:center;
+}
+
+
+/*/////IDEAS////*/
+
+.image-center {
+   padding-top: 40px;
+   text-align: center;
+}
+
+#videos.image-center {
+   padding-top: 140px;
+   padding-bottom: 30px;
+}
+
+#videos img,
+#music img,
+#games img,
+#music img {
+   max-width: 90%;
+   max-height: 90%;
+   padding: 14px;
+}
+
+#videos p,
+#games p,
+#memes p {
+   font-size: 26px;
+   line-height: 160%;
+}
+#music p {
+   font-size: 24px;
+   line-height: 130%;
+}
+
+#videos {
+   background: linear-gradient(90deg, rgba(212, 113, 173, 1) 0%, rgba(199, 21, 140, 1) 51%, rgba(157, 36, 142, 1) 100%);
+   height: auto;
+   display: block;
+   
+}
+#videos .btn-info {
+   background: linear-gradient(90deg, rgba(246, 221, 146, 1) 0%, rgba(240, 200, 59, 1) 51%, rgba(239, 196, 26, 1) 100%);
+   margin-top: 20px;
+   font-size: 22px;
+   color: darkorchid;
+}
+
+#videos p {
+   color: #f3b9fc;
+}
+
+#music {
+   padding: 0 100px 0 100px;
+   background: linear-gradient(90deg, rgba(187, 107, 217, 1) 0%, rgba(11, 189, 244, 1) 100%);
+   height: auto;
+   display: block;
+}
+#music .btn-info {
+   background: linear-gradient(90deg, rgba(187, 107, 217, 1) 0%, rgba(255, 95, 209, 1) 100%);
+   margin-top: 20px;
+   font-size: 22px;
+}
+#music p {
+   color: #fcf681;
+}
+#games {
+   padding: 0 100px 30px 100px;
+   background-image: url("./../img/game-audio-graphic.png");
+   background-size: cover;
+   height: auto;
+   display: block;
+}
+#games p,
+#memes p {
+   color: black;
+}
+#games .btn-info {
+   background: linear-gradient(90deg, rgba(187, 107, 217, 1) 0%, rgba(255, 95, 209, 1) 100%);
+   margin-top: 20px;
+   font-size: 22px;
+}
+
+#memes {
+   padding: 0 100px 50px 100px;
+   background-image: url("./../img/memes-graphic.png");
+   background-size: cover;
+   height: auto;
+   display: block;
+}
+
+#memes .btn-info {
+   background: linear-gradient(90deg, rgba(187, 107, 217, 1) 0%, rgba(255, 95, 209, 1) 100%);
+   margin-top: 20px;
+   font-size: 22px;
+}
+
+
+
+
+/*/////PLANS////*/
+
+#intro-plans {
+   text-align: center;
+}
+
+#fan-voices {
+   background-color: white;
+}
+
+#fan-voices-text {
+   color: black;
+}
+#fan-voices-text p,
+#publisher-text p,
+#trial-text p {
+   line-height: 2em;
+}
+
+#fan-voices-text li,
+#publisher-text li,
+#trial-text li {
+   font-size: 2.2em;
+   line-height: 1.8em;
+   padding: 10px;
+}
+.plans-list-align{
+   text-align: left;
+   list-style-position: outside;
+   
+}
+
+
+
+#fan-voices-text,
+#publisher-text,
+#trial-text {
+   padding-bottom: 50px;
+}
+
+#trial {
+   background-color: white;
+}
+
+#trial-text {
+   color: black;
+}
+
+footer {
+   padding: 20px;
+   font-size: 8px;
+   line-height: 23px;
+   font-family: AQLight;
+   text-align:left;
+}
+
+footer a, .footer-other {
+   font-size: 18px;
+   padding: 0 20px 0px 0;
+   font-family: AQCondensedMed;
+   letter-spacing: 3px;
+}
+
+
+footer li {
+   font-size: 9px;
+   padding: 10px;
+   list-style-type: none;
+}
+
+.bottom-footer{
+   padding: 10px 0 20px 0;
+}
+
+a {
+   color: #fff;
+}
+
+.privacy p {
+   font-family: AQMed, Arial, Helvetica, sans-serif;
+   font-size: 14px;
+}
+
+
+/*////////mobile///////////*/
+/*////////mobile///////////*/
+/*////////mobile///////////*/
+/*////////mobile///////////*/
+@media only screen and (max-width: 768px) {
+
+   h5 {
+      padding: 40px 10px 10px 10px;
+      font-size: 5.5em;
+   }
+   
+   h6 {
+      padding:0px 30px 30px 30px;
+      font-size: 3em;
+      line-height: normal;
+   }
+
+   #videos .btn-info,
+   #music .btn-info,
+   #games .btn-info,
+   #memes .btn-info {
+       font-size: 14px;
+       margin-top: 0;
+   }
+
+   .jumbotron h4,
+   .jumbotron p {
+       background: linear-gradient(90deg, rgba(187, 107, 217, 1) 0%, rgba(11, 189, 244, 1) 100%);
+   }
+   #fan-voices-text p,
+   #publisher-text p,
+   #trial-text p {
+       line-height: 1.8em;
+       font-size: 1.5em;
+   }
+   #fan-voices img,
+   #publisher img,
+   #trial img {
+       max-width: 80%;
+       max-height: 80%;
+       padding-bottom: 30px;
+   }
+   #fan-voices,
+   #publisher,
+   #trial {
+       text-align: center;
+   }
+   body {
+       text-align: center;
+   }
+   #intro-vf-logo {
+       padding: 0 0px 50px 0px;
+   }
+   #intro-vf-logo img {
+       max-width: 90%;
+       max-height: 90%;
+   }
+   #intro-row {
+       text-align: center;
+       padding-bottom: 40px;
+   }
+   #intro-row li{
+      letter-spacing: normal;
+      font-size: 30px;
+   }
+   .front-page-ideas-spacer {
+       height: 50px;
+   }
+
+
+   h3 {
+       font-size: 36px;
+       line-height: 55px;
+   }
+
+   #intro-plans {
+       padding: 30px;
+   }
+   #video,
+   #music,
+   #memes {
+       height: auto;
+       padding: 0px 0px 20px 0px;
+   }
+   #games {
+       height: 500px;
+   }
+   #music p,
+   #games p,
+   #memes p {
+       font-size: 1.5em;
+       line-height: 120%;
+   }
+   #music img,
+   #games img {
+       max-width: 90%;
+       max-height: 90%;
+   }
+   #memes img {
+       max-width: 80%;
+       max-height: 80%;
+   }
+
+   #games p {
+       margin-top: 200px;
+       background-color: goldenrod;
+       font-size: 1em;
+   }
+   #videos .col-md-4 p {
+       font-size: 1.2em;
+       padding-top: 30px;
+       padding-bottom: 30px;
+   }
+
+   #music .col-md-4 p {
+       font-size: 1.2em;
+       line-height: 120%;
+       padding: 0 10px 0 10px;
+   }
+
+   #memes .col-md-4 {
+       padding-top: 220px;
+   }
+   .plan-holder{
+      width: 100%;
+      left: 0;
+   }
+   .plan-text{
+      font-size: 0.8em;
+      padding: 40px;
+   }
+   #pricing-plans-heading-text{
+      padding: 0 0 50px 0;
+
+   }
+   #intro-paragraph{
+      text-align: center;
+   }
+
+
+}
+
+
+/*////////768////////*/
+/*////////768////////*/
+/*////////768////////*/
+/*////////768////////*/
+@media only screen and (min-width: 768px) {
+   .btn-dark {
+       display: inline;
+   }
+   .jumbotron h4,
+   .jumbotron p {
+       background: linear-gradient(90deg, rgba(187, 107, 217, 1) 0%, rgba(11, 189, 244, 1) 100%);
+       padding: 4px;
+   }
+
+   body {
+       text-align: center;
+   }
+
+   .front-page-ideas-spacer {
+       height: 50px;
+   }
+
+   #intro-row {
+       padding-bottom: 50px;
+   }
+
+   h3 {
+       font-size: 3.5em;
+   }
+
+   #intro-plans {
+       padding: 90px;
+   }
+   #memes .col-md-4,
+   #games .col-md-4 {
+       padding-top: 200px;
+       margin-top:150px;
+   }
+   .navbar-nav > .navbar-btn {
+      display: none;
+      }
+      #videos img{
+         max-height: 50%;
+         max-width: 50%;
+      }
+
+}
+/*////////992////////*/
+/*////////992////////*/
+/*////////992////////*/
+@media only screen and (min-width: 992px) {
+   .jumbotron h4 {
+       background: linear-gradient(90deg, rgba(187, 107, 217, 1) 0%, rgba(11, 189, 244, 1) 100%);
+   }
+   .jumbotron p {
+       font-size: 28px;
+       background: linear-gradient(90deg, rgba(187, 107, 217, 1) 0%, rgba(11, 189, 244, 1) 100%);
+   }
+
+   body {
+       text-align: center;
+   }
+
+   #intro-row {
+       padding-bottom: 90px;
+   }
+
+   h3 {
+       font-size: 4em;
+   }
+   #intro-plans {
+       padding: 120px;
+   }
+   #videos .col-md-4,
+   #music .col-md-4 {
+       padding-top: 90px;
+   }
+   #memes .col-md-4,
+   #games .col-md-4 {
+       padding-top: 200px;
+   }
+   .btn-dark {
+       display: none;
+   }
+   .navbar-nav > .navbar-btn {
+      display: block;
+      }
+      #videos img{
+         max-height: 70%;
+         max-width: 70%;
+      }
+
+}
+
+
+
+
+/*////////1200////////*/
+/*////////1200////////*/
+/*////////1200////////*//*////////1200////////*/
+/*////////1200////////*/
+@media only screen and (min-width: 1200px) {
+   .jumbotron h4 {
+       font-size: 8em;
+       background: transparent;
+   }
+
+   .jumbotron p {
+       font-size: 38px;
+       line-height: 40px;
+   }
+
+   body {
+       text-align: left;
+   }
+   #memes .col-md-4,
+   #games .col-md-4 {
+       padding-top: 90px;
+   }
+   .btn-dark {
+       display: none;
+   }
+   #memes, #games, #music, #videos{
+      padding: 10px 100px 100px 100px;
+   }
+   #games img, #music img, #videos img{
+      padding-top: 70px;
+      padding-bottom: 70px;
+   }
+   #memes img{
+      width: 60%;
+      height: 60%;
+      padding-top: 70px;
+      padding-bottom: 70px;
+   }
+
+
+
+}

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+  <title>VoiceHub | Demo</title>
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <link rel="stylesheet" type="text/css" href="./demo_files/main2.css">
+  <meta name="description" content="The VoiceHub demo to get your VoiceForge nostalgia thoughts back to life!">
+  <meta name="keywords" content="TTS, Text-to-Speech, Text-to-Voice, VoiceForge, speech, talking software, hosted, SaaS, synthesis, free demo, interactive, voice engine, audio, record, custom voices, prosody, voice demo, online tts, reader, synthesizer, converter, conversion, download">
+  <meta name="robots" content="index, follow">
+  <script type="text/javascript" src="./demo_files/jquery.js"></script>
+  <script language="javascript">
+      function ClearAll() {
+         document.getElementById('SpeakerDiv').value='';
+      }
+      function MaintainVoiceTagDiv() {
+         var vtd = document.getElementById('VoiceTagDiv');
+         var rstate = vtd.readyState;
+         if (rstate == 'complete') {
+           vtd.style.display='inline'
+         } else {
+           vtd.style.display='none';
+         }
+      }
+      function Trim() {
+         var elem = document.getElementById('PlayerText');
+         if (elem.value.length > 150)
+           elem.value = elem.value.substring(0,150);
+      }
+      function SynthPlay() {
+         ClearAll();
+         if (document.getElementById('AjaxLock').value > 0) { return };
+
+         var Usages = document.getElementById('Usages');
+         var TElem  = document.getElementById('SpeakerDiv');
+         var Text   = document.getElementById('PlayerText').value;
+         var Voice  = document.getElementById('PlayerVoice').value;
+
+         if (Usages.value > 20) {
+            Text = 'OVRUSG20';
+         }
+
+         if (Usages.value > 30) {
+            Text = 'OVRUSG30';
+         }
+
+         StartAJAX('Synthesize', TElem, Text, Voice);
+         Usages.value++;
+      }
+      function loadPic(vname) {
+         var imgsrc  = '/images/voices/sqr/' + vname + '.jpg';
+         var imgelem = '<img src="' + imgsrc + '" alt="Coming Soon!">';
+         document.getElementById('ImageDiv').innerHTML = imgelem;
+         document.getElementById('PlayerVoice').value = vname;
+         return false;
+      }
+      function SelectType(vtype) {
+         if (document.getElementById('AjaxLock').value > 0) {
+            return;
+         }
+
+         document.getElementById('VoiceTagDiv').innerHTML = '<img id="loadgif" name="loadgif" src="./demo_files/vf-loading.gif">';
+         document.getElementById('HotButton').style.color = '#444';
+         document.getElementById('CharacterButton').style.color = '#444';
+         document.getElementById('TelephonyButton').style.color = '#444';
+         document.getElementById('InternationalButton').style.color = '#444';
+         document.getElementById('AllButton').style.color = '#444';
+         document.getElementById('HotButton').style.fontWeight = 'normal';
+         document.getElementById('CharacterButton').style.fontWeight = 'normal';
+         document.getElementById('TelephonyButton').style.fontWeight = 'normal';
+         document.getElementById('InternationalButton').style.fontWeight = 'normal';
+         document.getElementById('AllButton').style.fontWeight = 'normal';
+         document.getElementById('HotButton').style.fontSize = '20px';
+         document.getElementById('CharacterButton').style.fontSize = '20px';
+         document.getElementById('TelephonyButton').style.fontSize = '20px';
+         document.getElementById('InternationalButton').style.fontSize = '20px';
+         document.getElementById('AllButton').style.fontSize = '20px';
+         document.getElementById(vtype + 'Button').style.color = '#E80';
+         document.getElementById(vtype + 'Button').style.fontWeight = 'bold';
+         document.getElementById(vtype + 'Button').style.fontSize = '30px';
+         document.getElementById('TypeData').value = vtype;
+         var TElem = document.getElementById('VoiceTagDiv');
+         StartAJAX('ShowType', TElem, vtype);
+      }
+      function SelectVoice(vname) {
+         var imgsrc  = 'https://web.archive.org/web/20080607123717/http://voiceforge.com/images/voice_icons/Voices_' + vname + '_wFlag.jpg';
+         var slength = document.getElementById('PlayerVoice').options.length;
+         var sindex  = 0;
+         for (x = 0; x < slength; x++) {
+            if (document.getElementById('PlayerVoice').options[x].text == vname) {
+               document.getElementById('PlayerVoice').options[x].selected = true;
+               loadPic(vname);         }
+         }
+
+      }
+      function StartAJAX (feature, targ, arg1, arg2) {
+         var Lock = document.getElementById('AjaxLock');
+         if (Lock.value > 0) {
+           return;
+         }
+         Lock.value = 1;
+         setTimeout("document.getElementById('AjaxLock').value = 0", 1500);
+         if (targ == document.getElementById("SpeakerDiv"))
+         {
+         targ.innerHTML = "Generating";
+         }
+         var xmlHttp;
+         try { // Firefox, Opera 8.0+, Safari
+            xmlHttp=new XMLHttpRequest();
+         } catch (e) {
+            try { // Internet Explorer
+               xmlHttp=new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+               try {  // Last Try
+                  xmlHttp=new ActiveXObject('Microsoft.XMLHTTP')
+               } catch (e) {
+                  var Response = '<font color=red>Connection Problems</font>';
+                  targ.innerHTML = Response
+                  alert('Sorry, your browser does not support AJAX.')
+                  return false;
+               }
+            }
+         }
+
+         var MyURL  = '/demo.cgi'
+         var Params = 'p=' + feature;
+         if (feature == 'ShowType') {
+           Params = Params + '&y=' + arg1;
+         }
+         if (feature == 'Synthesize') {
+           Params = Params + '&t=' + arg1;
+           Params = Params + '&v=' + arg2;
+         }
+         xmlHttp.open('POST', MyURL, true)
+         xmlHttp.setRequestHeader('Content-type',   'application/x-www-form-urlencoded');
+         xmlHttp.setRequestHeader('Content-length', Params.length);
+         xmlHttp.setRequestHeader('Connection',     'close');
+         xmlHttp.onreadystatechange=function() {
+           if (feature == 'ShowType') {
+
+           } else {
+             if (xmlHttp.readyState == 0) {
+               targ.innerHTML = 'Initializing..';
+             }
+             if (xmlHttp.readyState == 1) {
+               targ.innerHTML = 'Requesting..';
+             }
+             if (xmlHttp.readyState == 2) {
+               targ.innerHTML = 'Requesting..';
+             }
+             if (xmlHttp.readyState == 3) {
+               targ.innerHTML = 'Loading..';
+             }
+           }
+           if (xmlHttp.readyState == 4) {
+             var Response = xmlHttp.responseText;
+             if (Response == null) Response = '<font color=red>Connection Problems</font>';
+             if (targ == document.getElementById("SpeakerDiv"))
+             {
+             var source = document.getElementById('pie') || new Audio();
+            source.src = Response.toString();
+            targ.innerHTML = "Playback";
+            source.play();
+             }
+             else
+             {
+            targ.innerHTML = Response;           
+             }
+           }
+         }
+         xmlHttp.send(Params);
+      }
+   </script>
+</head>
+
+<body>
+
+  <header>
+    <h1><a href="/"><img src="./index_files/VoiceHub.jpg"
+          alt="VoiceForge" width="186" height="57"></a></h1>
+    <nav>
+      <ul id="toolbar-navigation">
+        <li><a href="/">Home</a>
+        </li>
+        <li class="lst"><a href="./contact-us">Contact Us</a>
+        </li>
+      </ul>
+      <ul id="main-navigation">
+        <li><a href="/what-is-voicehub">What is VoiceHub?</a>
+        </li>
+        <li class="cur"><a href="./demo">Demo</a>
+        </li>
+        <li><a href="./settings">Settings</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="page-header">
+    <img src="./demo_files/demo.jpg" alt="Demo" usemap="#hmap" width="860" height="154">
+    <map name="hmap">
+      <area shape="rect" coords="542,22,669,68" href="./demo?uservoice=Belle">
+    </map>
+  </div>
+
+  <div class="demo">
+    <div id="oldvfplayer">
+      <table width="795" border="0" align="center">
+          </table>
+          <input type="hidden" id="AjaxLock" value="0">
+          <input type="hidden" id="Usages" value="0">
+          <table width="780" border="0" align="center" cellspacing="4" cellpadding="4" style="font-family:sans-serif;">
+            <tr valign="top" align="center">
+              <td align="center" colspan="3" rowspan="1">
+
+
+          <!-- Begin VoiceForge Player -->
+
+          <center>
+          <font style="font-family:sans-serif;font-size:15px;color:#444;">
+            VoiceForge Demo Player
+          </font>
+          <table style="font-size:13px;border-style:solid;border-color:#420;background-image: url(https://astronomical-sandpaper.github.io/VoiceHub/index_files/background_orange_wstripes.jpg);margin-top:3px" cellspacing="0" cellpadding="4" width="550">
+            <tr valign="middle" align="center">
+              <td width="130">
+                <div id="ImageDiv" name="ImageDiv">
+                   <img id="curvox" name="ImageDivImg" alt="Callie" src="./images/voices/sqr/Callie.jpg">
+                </div>
+              <td width="320">
+                <textarea id="PlayerText" name="PlayerText" onkeyup="Trim()" wrap="soft" style="font-family:sans-serif;font-size:14px;height:90px;width:318px;border-style:solid;border-color:#630;background-color:#FFDD95;padding:5px;color:#444" value="Testing">Enter some text here, and click the play button on the right to start listening!</textarea>
+              <td width="100">
+                <img id="PlayButton" name="PlayButton" style="cursor:pointer" onclick="SynthPlay()" alt="Play" src="https://astronomical-sandpaper.github.io/VoiceHub/index_files/PlayButton_Orange_large.jpg"/>
+                <input name="PlayVal" id="PlayVal" value="Play" type="hidden">
+            <tr align="center" valign="middle" bgcolor="#AA5500">
+              <td colspan="2">
+                <select id="PlayerVoice" name="PlayerVoice" style="width:100%" onchange="loadPic(this.options[this.selectedIndex].value)">
+                   <option style="background-color:#FC9" value="Allison">Allison</option>
+                   <option style="background-color:#FC9" value="Amy">Amy</option>
+                   <option style="background-color:#FC9" value="Belle">Belle</option>
+                   <option style="background-color:#FC9" value="Callie" selected="Callie">Callie</option>
+                   <option style="background-color:#FC9" value="Charlie">Charlie</option>
+                   <option style="background-color:#FC9" value="Conrad">Conrad</option>
+                   <option style="background-color:#FC9" value="Dallas">Dallas</option>
+                   <option style="background-color:#FC9" value="Damien">Damien</option>
+                   <option style="background-color:#FC9" value="David">David</option>
+                   <option style="background-color:#FC9" value="Designer">DesignerDave</option>
+                   <option style="background-color:#FC9" value="Diane">Diane</option>
+                   <option style="background-color:#FC9" value="Diesel">Diesel</option>
+                   <option style="background-color:#FC9" value="Dog">Dog</option>
+                   <option style="background-color:#FC9" value="Duchess">Duchess</option>
+                   <option style="background-color:#FC9" value="Duncan">Duncan</option>
+                   <option style="background-color:#FC9" value="Emily">Emily</option>
+                   <option style="background-color:#FC9" value="Evilgenius">Evilgenius</option>
+                   <option style="background-color:#FC9" value="Frank">Frank</option>
+                   <option style="background-color:#FC9" value="French-fry">French-fry</option>
+                   <option style="background-color:#FC9" value="Gregory">Gregory</option>
+                   <option style="background-color:#FC9" value="Jerkface">JerkFace</option>
+                   <option style="background-color:#FC9" value="Katrin">Katrin</option>
+                   <option style="background-color:#FC9" value="Kayla">Kayla</option>
+                   <option style="background-color:#FC9" value="Kevin">Kevin</option>
+                   <option style="background-color:#FC9" value="Kidaroo">Kidaroo</option>
+                   <option style="background-color:#FC9" value="JerseyGirl">Kirsty</option>
+                   <option style="background-color:#FC9" value="Lawrence">Lawrence</option>
+                   <option style="background-color:#FC9" value="Linda">Linda</option>
+                   <option style="background-color:#FC9" value="Millie">Millie</option>
+                   <option style="background-color:#FC9" value="Princess">Princess</option>
+                   <option style="background-color:#FC9" value="RansomNote">RansomNote</option>
+                   <option style="background-color:#FC9" value="Robin">Robin</option>
+                   <option style="background-color:#FC9" value="Shouty">Shouty</option>
+                   <option style="background-color:#FC9" value="Vlad">Vlad</option>
+                   <option style="background-color:#FC9" value="Walter">Walter</option>
+                   <option style="background-color:#FC9" value="Whispery">Whispery</option>
+                   <option style="background-color:#FC9" value="William">William</option>
+                   <option style="background-color:#FC9" value="Wiseguy">Wiseguy</option>
+                   <option style="background-color:#FC9" value="Zach">Zach</option>
+                </select>
+              <td>
+                <div id="SpeakerDiv" name="SpeakerDiv" style="width:75px;height:10px;color:#FFF">
+                  Ready
+                </div>
+            <tr>
+              <td colspan="3" style="background-color:#773500">
+                <center style="padding-top:5px;padding-bottom:3px;font-size:10px;color:#FFF;font-family:sans-serif">
+                  If you experience any trouble with this player, please try installing <a href="http://www.apple.com/quicktime/download/" style="text-decoration:underline;color:#FFF" target="_blank"><b>QuickTime</b></a> or using <a href="https://www.mozilla.org/en-US/firefox/new/" style="text-decoration:underline;color:#FFF" target="_blank"><b>FireFox</b></a>.</center>
+          </table>
+
+          <!-- End VoiceForge Player -->
+
+
+            <tr>
+              <td colspan="3">
+                 &nbsp;
+            <tr valign="middle" align="center">
+              <td colspan="3" style="font-family:sans-serif;font-size:20px;color:#444;vertical-align:middle">
+                 <table align="center"><tr valign="middle" style="font-family:sans-serif;font-size:20px;color:#444;vertical-align:middle">
+                   <td style="color:#630">Choose a Category: &nbsp; 
+                   <td><a id="HotButton" onclick="SelectType('Hot')" style="cursor:pointer">Hot</a>
+                   <td> - 
+                   <td><a id="CharacterButton" onclick="SelectType('Character')" style="cursor:pointer">Character</a>
+                   <td> - 
+                   <td><a id="TelephonyButton" onclick="SelectType('Telephony')" style="cursor:pointer">Telephony</a>
+                   <td> - 
+                   <td><a id="InternationalButton" onclick="SelectType('International')" style="cursor:pointer">International</a>
+                   <td> - 
+                   <td><a id="AllButton" onclick="SelectType('All')" style="cursor:pointer">All</a>
+                 </table>
+            <tr valign="middle" align="center">
+              <td align="center" colspan="3">
+                 <input type="hidden" id="TypeData" name="TypeData">
+                 <div id="VoiceTagDiv" name="VoiceTagDiv" align="center" onreadystatechange="MaintainVoiceTagDiv()/">
+          </table>
+          </table>
+
+          <audio id="pie" controls style="display:none">
+            <source id="source" src="" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio>
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+  <script language="Javascript">
+    SelectType('Hot');
+  </script>
+  <script>
+    let greyedout;
+    fetch('./filterVoices', {
+          method: 'GET'
+    })
+          .then(response => response.json())
+          .then(grey => {
+            greyedout = grey;
+            for (var i = 0; i < grey.length; i++)
+              {
+              document.getElementById(grey[i]).style.filter = "grayscale(100%)";
+              var option = document.getElementById('_' + grey[i]);
+              option.remove();
+              }
+          })
+  </script>
+  <footer>
+    <p>Technology and Copyright © 2023 Cepstral LLC + Mondora. All Rights Reserved.</p>
+    <p class="power">TTS engine powered by: <a href="https://www.cepstral.com/"><img src="./demo_files/cepstral-logo.gif"
+          alt="Cepstral" width="79" height="20"></a></p>
+  </footer>
+
+</body>
+
+</html>
